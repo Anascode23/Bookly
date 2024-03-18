@@ -4,5 +4,5 @@ Bookly is an E-commerce store that sells books in bulk
 
 
 
-#   how to get started!
+#   How to get started!
 
