@@ -17,4 +17,4 @@ To login in as an administrator do the following:
 
 #   Feedback
 
-All feedback and suggesting are wellcome and if you have any question you are wellcome to private message me or ask them on my Linkedin posts: https://www.linkedin.com/in/anas-ali-8a1b701b5/
+All feedback and suggesting are wellcome and if you have any questions you are wellcome to private message me or ask them on my Linkedin posts: https://www.linkedin.com/in/anas-ali-8a1b701b5/
