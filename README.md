@@ -14,4 +14,4 @@ Click this link to open the application and explore it. After you are done explo
 
 
 # Feedback
-All feedback and suggestions are welcome. If you have any questions, feel free to private message me or ask them in the comments on my LinkedIn posts.
+All feedback and suggestions are welcome. If you have any questions, feel free to private message me or ask them in the comments on my LinkedIn posts: https://www.linkedin.com/in/anas-ali-8a1b701b5/
