@@ -9,6 +9,7 @@ Bookly is an E-commerce store that sells books in bulk.
 Click this link to open the application and explore it.
 After you are done exploring you login in as an administrator to discover even more features.
 To login in as an administrator do the following:
+
       1. On the top right you will see a login in button click it
       2. In the Username section type:       and the Password section type:
       3. Now on the top left you will se a new link
