@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BooklyWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = SD.Role_Admin)]
+    //  [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _work;
@@ -84,7 +84,7 @@ namespace BooklyWeb.Areas.Admin.Controllers
             }
             return View(categoryFromDb);
         }
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         public IActionResult DeletePost(int? id)
         {
             var categoryFromDb = _work.Category.Get(u => u.Id == id);
