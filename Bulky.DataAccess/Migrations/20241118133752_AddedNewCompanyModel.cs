@@ -7,7 +7,7 @@
 namespace Bookly.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class madeIntsToStrings : Migration
+    public partial class AddedNewCompanyModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,7 +36,7 @@ namespace Bookly.DataAccess.Migrations
                 columns: new[] { "Id", "City", "Name", "PhoneNumber", "PostalCode", "State", "StreetAddress" },
                 values: new object[,]
                 {
-                    { 1, "Tech City", "Tech Solutions", "66669990000", "12121", "IL", "123 Tech St" },
+                    { 1, "Tech City", "Tech Solutions", "6669990000", "12121", "IL", "123 Tech St" },
                     { 2, "Vid City", "Vivid Books", "7779990000", "66666", "IL", "999 vid St" },
                     { 3, "Lala land", "Readers Club", "1113335555", "99999", "NY", "999 Main St" }
                 });

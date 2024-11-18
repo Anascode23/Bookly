@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookly.DataAccess.Migrations
 {
     [DbContext(typeof(BooklyDbContext))]
-    [Migration("20241107141111_AddedNewModelCompany")]
-    partial class AddedNewModelCompany
+    [Migration("20241118135302_FixedDatatypesOnCompanyModel")]
+    partial class FixedDatatypesOnCompanyModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

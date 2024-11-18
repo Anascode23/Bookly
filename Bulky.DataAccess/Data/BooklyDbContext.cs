@@ -31,7 +31,7 @@ namespace Bookly.DataAccess.Data
                 new Category { Id = 2, Name = "Mystery", DisplayOrder = 2 },
                 new Category { Id = 3, Name = "SciFi", DisplayOrder = 3 }
                 );
-            modelBuilder.Entity<Company>().HasData(
+            modelBuilder.Entity<Company>().HasData( //the problem is that state and phoneNumber are registered in the migrations as int not string fix that
                new Company
                {
                    Id = 1,
@@ -40,7 +40,7 @@ namespace Bookly.DataAccess.Data
                    City = "Tech City",
                    PostalCode = "12121",
                    State = "IL",
-                   PhoneNumber = "66669990000"
+                   PhoneNumber = "6669990000"
                },
                 new Company
                 {
