@@ -14,6 +14,7 @@ namespace BooklyWeb.Areas.Admin.Controllers
     [Area("Admin")]
     [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
+    // Need to reseed my product table because nothing is being displayed in homepage 
     {
         private readonly IUnitOfWork _work;
         private readonly BooklyDbContext _booklyDb;
