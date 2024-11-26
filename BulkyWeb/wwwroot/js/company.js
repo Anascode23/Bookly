@@ -7,7 +7,7 @@ function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
             url:
-                '/admin/company/getall'
+                '/admin/company/getcompanylist' //this url always goes to product.js instead of company.js WHY
         },
         "columns": [
             { data: 'name', "width": "15%" },

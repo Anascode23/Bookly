@@ -10,7 +10,7 @@ namespace Bookly.DataAccess.Data
     {
         public BooklyDbContext(DbContextOptions options) : base(options)
         {
-            // Need to reseed my product table because nothing is being displayed in homepage 
+            // Need to reseed my product table because nothing is being displayed in homepage (Done)
             // recreate company view because it is connected to product view
         }
         public DbSet<Category> Categories { get; set; }
@@ -32,7 +32,7 @@ namespace Bookly.DataAccess.Data
                 new Category { Id = 2, Name = "Mystery", DisplayOrder = 2 },
                 new Category { Id = 3, Name = "SciFi", DisplayOrder = 3 }
                 );
-            modelBuilder.Entity<Company>().HasData( //the problem is that state and phoneNumber are registered in the migrations as int not string fix that
+            modelBuilder.Entity<Company>().HasData(
                new Company
                {
                    Id = 1,

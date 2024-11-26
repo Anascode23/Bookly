@@ -74,7 +74,7 @@ namespace BooklyWeb.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public IActionResult Getall()
+        public IActionResult GetCompanyList() //There is something wrong with this method
         {
             var objCompanyList = _work.Company.GetAll().ToList();
 
