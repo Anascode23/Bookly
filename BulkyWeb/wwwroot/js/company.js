@@ -7,13 +7,13 @@ function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
             url:
-                '/admin/company/getcompanylist' //this url always goes to product.js instead of company.js WHY
+                '/admin/company/getall' //this url always goes to product.js instead of company.js WHY
         },
         "columns": [
             { data: 'name', "width": "15%" },
-            { data: 'streetAdress', "width": "15%" },
-            { data: 'city', "width": "15%" },
+            { data: 'streetAddress', "width": "15%" },
             { data: 'state', "width": "15%" },
+            { data: 'city', "width": "15%" },
             { data: 'phoneNumber', "width": "15%" },
             {
                 data: 'id', "render": function (data) {

@@ -10,8 +10,6 @@ namespace Bookly.DataAccess.Data
     {
         public BooklyDbContext(DbContextOptions options) : base(options)
         {
-            // Need to reseed my product table because nothing is being displayed in homepage (Done)
-            // recreate company view because it is connected to product view
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
