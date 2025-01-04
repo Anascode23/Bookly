@@ -21,6 +21,8 @@ namespace Bookly.DataAccess.Repository.Implementation
 
         public IShoppingCartRepository ShoppingCart { get; private set; }
 
+        public IApplicationUserRepository ApplicationUser { get; private set; }
+
         public UnitOfWork(BooklyDbContext bulkyDb)
         {
             _bulkyDb = bulkyDb;
@@ -28,6 +30,7 @@ namespace Bookly.DataAccess.Repository.Implementation
             Product = new ProductRepository(_bulkyDb);
             Company = new CompanyRepository(_bulkyDb);
             ShoppingCart = new ShoppingCartRepository(_bulkyDb);
+            ApplicationUser = new ApplicationUserRepository(_bulkyDb);
         }
 
 
