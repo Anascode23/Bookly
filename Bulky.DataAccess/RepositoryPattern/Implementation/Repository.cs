@@ -37,9 +37,19 @@ namespace Bookly.DataAccess.Repository.Implementation
             dbset.RemoveRange(entity);
         }
 
-        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
+        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = false)
         {
-            IQueryable<T> query = dbset;
+            IQueryable<T> query;
+            if (tracked)
+            {
+                query = dbset;
+            }
+            else
+            {
+                query = dbset.AsNoTracking();
+
+            }
+
             query = query.Where(filter);
             if (!string.IsNullOrEmpty(includeProperties))
             {
@@ -52,7 +62,6 @@ namespace Bookly.DataAccess.Repository.Implementation
 
             }
             return query.FirstOrDefault();
-
         }
 
         public IEnumerable<T> GetAll(string includeProperties = null)

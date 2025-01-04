@@ -1,7 +1,9 @@
 using Bookly.DataAccess.Repository.Interface;
 using Bookly.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace BooklyWeb.Areas.Customer.Controllers
 {
@@ -25,8 +27,41 @@ namespace BooklyWeb.Areas.Customer.Controllers
         }
         public IActionResult Details(int productId)
         {
-            var product = _work.Product.Get(u => u.Id == productId, includeProperties: "Category");
-            return View(product);
+            ShoppingCart cart = new()
+            {
+                Product = _work.Product.Get(u => u.Id == productId, includeProperties: "Category"),
+                Count = 1,
+                productId = productId
+            };
+
+            return View(cart);
+        }
+        [HttpPost]
+        [Authorize]
+        public IActionResult Details(ShoppingCart shoppingCart)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            shoppingCart.ApplicationUserId = userId;
+
+            ShoppingCart cartFromDb = _work.ShoppingCart.Get(u => u.ApplicationUserId ==
+            userId && u.productId == shoppingCart.productId);
+
+            if (cartFromDb != null)
+            {
+                cartFromDb.Count += shoppingCart.Count;
+                _work.ShoppingCart.Update(cartFromDb);
+            }
+            else
+            {
+                _work.ShoppingCart.Add(shoppingCart);
+            }
+
+            _work.Save();
+
+            TempData["success"] = "Cart updated successfully";
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()

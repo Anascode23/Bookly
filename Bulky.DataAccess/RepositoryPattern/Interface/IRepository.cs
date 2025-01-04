@@ -10,7 +10,7 @@ namespace Bookly.DataAccess.Repository.Interface
     public interface IRepository<T> where T : class
     {
         IEnumerable<T> GetAll(string? includeProperties = null);
-        T Get(Expression<Func<T, bool>> filer, string? includeProperties = null);
+        T Get(Expression<Func<T, bool>> filer, string? includeProperties = null, bool tracked = false);
         void Add(T entity);
         void Delete(T entity);
         void DeleteAll(IEnumerable<T> entity);
