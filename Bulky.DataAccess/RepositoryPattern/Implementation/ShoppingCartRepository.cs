@@ -5,24 +5,23 @@ using Bookly.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Bookly.DataAccess.RepositoryPattern.Implementation
 {
-    public class CategoryRepository : Repository<Category>, ICategoryRepository
+    public class ShoppingCartRepository : Repository<ShoppingCart>, IShoppingCartRepository
     {
         private readonly BooklyDbContext _bulkyDb;
-
-        public CategoryRepository(BooklyDbContext bulkyDb) : base(bulkyDb)
+        public ShoppingCartRepository(BooklyDbContext context) : base(context)
         {
-            _bulkyDb = bulkyDb;
+            _bulkyDb = context;
         }
 
-        public void Update(Category obj)
+        public void Update(ShoppingCart obj)
         {
-            _bulkyDb.Categories.Update(obj);
+            _bulkyDb.ShoppingCarts.Update(obj);
         }
     }
+
 }
