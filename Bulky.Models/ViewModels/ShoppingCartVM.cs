@@ -9,6 +9,7 @@ namespace Bookly.Models.ViewModels
     public class ShoppingCartVM
     {
         public IEnumerable<ShoppingCart> shoppingCartsList { get; set; }
-        public double OrderTotal { get; set; }
+        public OrderHeader OrderHeader { get; set; }
+
     }
 }
