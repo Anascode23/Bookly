@@ -17,5 +17,32 @@ namespace Bookly.DataAccess.RepositoryPattern.Implementation
         {
             _bulkyDb.OrderHeaders.Update(obj);
         }
+
+        public void UpdateStatus(int id, string orderStatus, string? paymentstatus = null)
+        {
+            var orderFromDb = _bulkyDb.OrderHeaders.FirstOrDefault(u => u.Id == id);
+            if (orderFromDb != null)
+            {
+                orderFromDb.OrderStatus = orderStatus;
+                if (!string.IsNullOrEmpty(paymentstatus))
+                {
+                    orderFromDb.PaymentStatus = paymentstatus;
+                }
+            }
+        }
+
+        public void UpdateStripePaymentID(int id, string sessionid, string paymentIntentId)
+        {
+            var orderFromDb = _bulkyDb.OrderHeaders.FirstOrDefault(u => u.Id == id);
+            if (!string.IsNullOrEmpty(sessionid))
+            {
+                orderFromDb.SessionId = sessionid;
+            }
+            if (!string.IsNullOrEmpty(paymentIntentId))
+            {
+                orderFromDb.PaymentIntentId = paymentIntentId;
+                orderFromDb.PaymentDate = DateTime.Now;
+            }
+        }
     }
 }
