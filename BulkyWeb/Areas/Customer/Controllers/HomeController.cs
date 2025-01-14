@@ -31,7 +31,7 @@ namespace BooklyWeb.Areas.Customer.Controllers
             {
                 Product = _work.Product.Get(u => u.Id == productId, includeProperties: "Category"),
                 Count = 1,
-                productId = productId
+                ProductId = productId
             };
 
             return View(cart);
@@ -45,7 +45,7 @@ namespace BooklyWeb.Areas.Customer.Controllers
             shoppingCart.ApplicationUserId = userId;
 
             ShoppingCart cartFromDb = _work.ShoppingCart.Get(u => u.ApplicationUserId ==
-            userId && u.productId == shoppingCart.productId);
+            userId && u.ProductId == shoppingCart.ProductId);
 
             if (cartFromDb != null)
             {

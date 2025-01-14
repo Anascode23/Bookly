@@ -12,8 +12,8 @@ namespace Bookly.Models
     public class ShoppingCart
     {
         public int Id { get; set; }
-        public int productId { get; set; }
-        [ForeignKey("productId")]
+        public int ProductId { get; set; }
+        [ForeignKey("ProductId")]
         [ValidateNever]
         public Product Product { get; set; }
         public int Count { get; set; }
