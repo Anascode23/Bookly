@@ -1,9 +1,9 @@
 ﻿using Bookly.DataAccess.Data;
 using Bookly.DataAccess.Repository.Interface;
 using Bookly.Models.ViewModels;
-using Bookly.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Bookly.Models.Models;
 
 namespace BooklyWeb.Areas.Admin.Controllers
 {

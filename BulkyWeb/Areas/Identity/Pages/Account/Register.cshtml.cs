@@ -11,7 +11,7 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
 using Bookly.DataAccess.Repository.Interface;
-using Bookly.Models;
+using Bookly.Models.Models;
 using Bookly.Utility;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;

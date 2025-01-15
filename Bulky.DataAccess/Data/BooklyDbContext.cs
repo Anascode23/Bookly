@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Bookly.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Reflection.Emit;
 using Microsoft.AspNetCore.Identity;
+using Bookly.Models.Models;
 
 namespace Bookly.DataAccess.Data
 {

@@ -1,7 +1,7 @@
 ﻿using Bookly.DataAccess.Data;
 using Bookly.DataAccess.Repository.Implementation;
 using Bookly.DataAccess.RepositoryPattern.Interface;
-using Bookly.Models;
+using Bookly.Models.Models;
 
 namespace Bookly.DataAccess.RepositoryPattern.Implementation
 {

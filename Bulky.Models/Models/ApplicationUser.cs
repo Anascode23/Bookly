@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookly.Models
+namespace Bookly.Models.Models
 {
     public class ApplicationUser : IdentityUser
     {

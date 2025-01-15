@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Bookly.Models
+namespace Bookly.Models.Models
 {
     public class Category
     {

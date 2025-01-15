@@ -1,5 +1,5 @@
 ﻿using Bookly.DataAccess.Repository.Interface;
-using Bookly.Models;
+using Bookly.Models.Models;
 using Bookly.Models.ViewModels;
 using Bookly.Utility;
 using Microsoft.AspNetCore.Authorization;
