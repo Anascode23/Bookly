@@ -1,5 +1,6 @@
 ﻿using Bookly.DataAccess.Repository.Interface;
 using Bookly.Models.Models;
+using Bookly.Models.ViewModels;
 using Bookly.Utility;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -18,6 +19,18 @@ namespace BooklyWeb.Areas.Admin.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Details(int orderId)
+        {
+            OrderVM orderVM = new()
+            {
+                OrderHeader = _work.OrderHeader.Get(u => u.Id == orderId, includeProperties:"ApplicationUser"),
+                OrderDetail = _work.OrderDetail.GetAll(u => u.OrderHeaderId == orderId, includeProperties:"Product")
+            };
+            
+            
+            return View(orderVM);
         }
 
         #region API CALLS
@@ -43,7 +56,7 @@ namespace BooklyWeb.Areas.Admin.Controllers
                 case "approved":
                     objOrderHeadersList = objOrderHeadersList.Where(u => u.OrderStatus == SD.StatusApproved);
                     break;
-                default:                    
+                default:
                     break;
 
             }
