@@ -197,9 +197,11 @@ namespace BooklyWeb.Areas.Customer.Controllers
 
         public IActionResult Minus(int cartId)
         {
-            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId);
+            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked: true);
             if (cartFromDb.Count == 1)
             {
+                HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.
+               GetAll(u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count() - 1);
                 _unitOfWork.ShoppingCart.Delete(cartFromDb);
             }
             else
@@ -215,7 +217,9 @@ namespace BooklyWeb.Areas.Customer.Controllers
 
         public IActionResult Remove(int cartId)
         {
-            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId);
+            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked: true);
+            HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.
+               GetAll(u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count() - 1);
             _unitOfWork.ShoppingCart.Delete(cartFromDb);
             _unitOfWork.Save();
 

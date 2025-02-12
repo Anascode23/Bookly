@@ -157,7 +157,7 @@ namespace BooklyWeb.Areas.Admin.Controllers
                 {
                     PriceData = new SessionLineItemPriceDataOptions
                     {
-                        UnitAmount = (long)(item.Price * 100), // $20.50 => 2050
+                        UnitAmount = (long)(item.Price * 100),
                         Currency = "SEK",
                         ProductData = new SessionLineItemPriceDataProductDataOptions
                         {

@@ -2,13 +2,14 @@
 using Bookly.DataAccess.Repository.Interface;
 using Bookly.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Bookly.Models.Models;
+using Microsoft.AspNetCore.Authorization;
+using Bookly.Utility;
 
 namespace BooklyWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //  [Authorize(Roles = SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CompanyController : Controller
     {
         private readonly IUnitOfWork _work;

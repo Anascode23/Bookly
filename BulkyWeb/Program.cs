@@ -27,6 +27,19 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 });
 
+builder.Services.AddAuthentication().AddFacebook(option =>
+{
+    option.AppId = "1139780330886598";
+    option.AppSecret = "65f79e1c4599d69de79df3f8d3992818";
+});
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(100);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
@@ -47,6 +60,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",

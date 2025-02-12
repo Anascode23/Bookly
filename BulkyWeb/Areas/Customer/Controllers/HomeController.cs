@@ -1,6 +1,8 @@
 using Bookly.DataAccess.Repository.Interface;
 using Bookly.Models.Models;
+using Bookly.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
@@ -22,6 +24,7 @@ namespace BooklyWeb.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
+
             var productList = _work.Product.GetAll(includeProperties: "Category");
             return View(productList);
         }
@@ -51,13 +54,17 @@ namespace BooklyWeb.Areas.Customer.Controllers
             {
                 cartFromDb.Count += shoppingCart.Count;
                 _work.ShoppingCart.Update(cartFromDb);
+                _work.Save();
             }
             else
             {
                 _work.ShoppingCart.Add(shoppingCart);
+                _work.Save();
+                HttpContext.Session.SetInt32(SD.SessionCart, _work.ShoppingCart.GetAll(u => u.ApplicationUserId ==
+            userId).Count());
             }
 
-            _work.Save();
+
 
             TempData["success"] = "Cart updated successfully";
 

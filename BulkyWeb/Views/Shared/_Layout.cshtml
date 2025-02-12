@@ -1,15 +1,19 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BooklyWeb</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/BooklyWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href ="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
-    
-    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdn.datatables.net/2.0.1/css/dataTables.dataTables.min.css" />
 </head>
@@ -28,31 +32,34 @@
                             <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link "  asp-area="Admin" asp-controller="Order" asp-action="Index">Mange Order</a>
-                        </li>   
-                        @*  @if(User.IsInRole(SD.Role_Admin)){  *@
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Content Mangement
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a class="dropdown-item " asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="dropdown-item " asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="dropdown-item " asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
-                                </li>
-                            </ul>
+                            <a class="nav-link " asp-area="Admin" asp-controller="Order" asp-action="Index">Mange Order</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Customer" asp-controller="Cart" asp-action="Index">
-                                <i class="bi bi-cart"></i> &nbsp; 
-                            </a>
-                        </li>
-                        @*  }  *@
+                        @if (User.IsInRole(SD.Role_Admin))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Content Mangement
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item " asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item " asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item " asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }                                               
+                            <li class="nav-item">
+                                <a class="nav-link " asp-area="Customer" asp-controller="Cart" asp-action="Index">   
+                                    @await Component.InvokeAsync("ShoppingCart")
+                                </a>
+                            </li>
+                        
+                        
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -73,7 +80,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>    
+    <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.datatables.net/2.0.1/js/dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tiny.cloud/1/ijl9ug78yiyaypruv2akznctzmvhgl06hgzfd1pqaec10p19/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
