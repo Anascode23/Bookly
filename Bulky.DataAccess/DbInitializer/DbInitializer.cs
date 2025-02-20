@@ -3,11 +3,6 @@ using Bookly.Models.Models;
 using Bookly.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bookly.DataAccess.DbInitializer
 {
@@ -50,8 +45,11 @@ namespace Bookly.DataAccess.DbInitializer
                     StreetAddress = "Test 123 Ave",
                     State = "IL",
                     PostalCode = "12345",
+                    EmailConfirmed = true,
                     City = "Chicago"
                 }, "Admin123!").GetAwaiter().GetResult();
+
+
 
 
                 ApplicationUser user = _booklyDb.ApplicationUsers.FirstOrDefault(u => u.Email == "admin@bookly.com");
